@@ -1,0 +1,15 @@
+from nornir import InitNornir
+from nornir.plugins.tasks.networking import netmiko_send_command
+from nornir.plugins.functions.text import print_result
+
+
+def main():
+    nr = InitNornir(config_file="nornirconfig.yaml")
+    results = nr.run(task=netmiko_send_command, command_string="show ip int bri")
+    #import ipdb; ipdb.set_trace()
+    
+    print_result(results)
+
+
+if __name__=="__main__":
+    main()
